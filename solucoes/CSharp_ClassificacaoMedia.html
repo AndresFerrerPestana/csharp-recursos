@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CSharp_ClassificacaoMedia — Solução</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header><div class="header-inner">
+<div class="eyebrow">C# · Solução proposta</div>
+<h1>CSharp_ClassificacaoMedia</h1>
+<p class="subtitle">Média aritmética e cadeia else if.</p>
+</div></header>
+<main>
+<div class="breadcrumb"><a href="../index.html">← Voltar ao índice</a></div>
+<section class="card">
+<h2>Objetivo</h2><p>Ler três valores, calcular a média e apresentar uma classificação de acordo com intervalos definidos.</p>
+<div class="badges"><span class="badge">double.TryParse</span><span class="badge">média</span><span class="badge">else if</span><span class="badge">F2</span></div>
+</section>
+<section class="card">
+<h2>Código</h2>
+<div class="tabs">
+<button class="tab active" id="tabManual" onclick="showTab('manual')">Código do manual</button>
+<button class="tab" id="tabOnline" onclick="showTab('online')">Versão para compilador online</button>
+</div>
+
+<div id="panelManual">
+<div class="toolbar">
+<div><strong>Versão moderna</strong><br><span class="small">Adequada a projetos com instruções de nível superior.</span></div>
+<div class="actions">
+<button class="secondary" onclick="copyText('manualCode')">Copiar código</button>
+<a class="button secondary" href="../codigo/CSharp_ClassificacaoMedia_manual.cs" download>Descarregar .cs</a>
+</div></div>
+<div class="status" id="statusManual"></div>
+<pre id="manualCode"><code>Console.Write(&quot;Primeiro valor: &quot;);
+bool v1Valido = double.TryParse(Console.ReadLine(), out double valor1);
+
+Console.Write(&quot;Segundo valor: &quot;);
+bool v2Valido = double.TryParse(Console.ReadLine(), out double valor2);
+
+Console.Write(&quot;Terceiro valor: &quot;);
+bool v3Valido = double.TryParse(Console.ReadLine(), out double valor3);
+
+if (!v1Valido || !v2Valido || !v3Valido)
+{
+    Console.WriteLine(&quot;Valor inválido.&quot;);
+}
+else
+{
+    double media = (valor1 + valor2 + valor3) / 3;
+
+    Console.WriteLine($&quot;Média: {media:F2}&quot;);
+
+    if (media &gt;= 18)
+        Console.WriteLine(&quot;Muito bom&quot;);
+    else if (media &gt;= 14)
+        Console.WriteLine(&quot;Bom&quot;);
+    else if (media &gt;= 10)
+        Console.WriteLine(&quot;Suficiente&quot;);
+    else
+        Console.WriteLine(&quot;Insuficiente&quot;);
+}</code></pre>
+</div>
+
+<div id="panelOnline" class="hidden">
+<div class="toolbar">
+<div><strong>Versão compatível com compiladores online</strong><br><span class="small">Inclui explicitamente <code>Program</code> e <code>Main()</code>.</span></div>
+<div class="actions">
+<button class="secondary" onclick="copyText('onlineCode')">Copiar versão online</button>
+<a class="button secondary" href="../codigo/CSharp_ClassificacaoMedia_online.cs" download>Descarregar .cs</a>
+<button class="primary" onclick="copyAndOpen()">Copiar e abrir OneCompiler</button>
+</div></div>
+<div class="status" id="statusOnline"></div>
+<pre id="onlineCode"><code>using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write(&quot;Primeiro valor: &quot;);
+        bool v1Valido = double.TryParse(Console.ReadLine(), out double valor1);
+
+        Console.Write(&quot;Segundo valor: &quot;);
+        bool v2Valido = double.TryParse(Console.ReadLine(), out double valor2);
+
+        Console.Write(&quot;Terceiro valor: &quot;);
+        bool v3Valido = double.TryParse(Console.ReadLine(), out double valor3);
+
+        if (!v1Valido || !v2Valido || !v3Valido)
+        {
+            Console.WriteLine(&quot;Valor inválido.&quot;);
+        }
+        else
+        {
+            double media = (valor1 + valor2 + valor3) / 3;
+
+            Console.WriteLine($&quot;Média: {media:F2}&quot;);
+
+            if (media &gt;= 18)
+                Console.WriteLine(&quot;Muito bom&quot;);
+            else if (media &gt;= 14)
+                Console.WriteLine(&quot;Bom&quot;);
+            else if (media &gt;= 10)
+                Console.WriteLine(&quot;Suficiente&quot;);
+            else
+                Console.WriteLine(&quot;Insuficiente&quot;);
+        }
+    }
+}</code></pre>
+<div class="note"><strong>Entrada no OneCompiler:</strong> Três linhas com os valores. Ex.: `18`, `17`, `19`.</div>
+</div>
+
+<div class="note"><strong>Porque existem duas versões?</strong> O Visual Studio com C# moderno pode utilizar instruções de nível superior. Alguns compiladores online utilizam a estrutura tradicional com <code>Program</code> e <code>Main()</code>.</div>
+</section>
+
+<section class="card"><h2>Como funciona</h2><ul><li>A média é calculada apenas quando as três entradas são válidas.</li><li>As condições devem ser avaliadas do valor mais alto para o mais baixo.</li></ul></section>
+
+<section class="card"><h2>Testes recomendados</h2>
+<table><thead><tr><th>Entrada / situação</th><th>Resultado esperado</th><th>Objetivo</th></tr></thead>
+<tbody><tr><td><code>18 / 18 / 18</code></td><td>Muito bom</td><td>Limite da primeira categoria.</td></tr><tr><td><code>14 / 14 / 14</code></td><td>Bom</td><td>Valor de fronteira.</td></tr><tr><td><code>10 / 10 / 10</code></td><td>Suficiente</td><td>Valor de fronteira.</td></tr><tr><td><code>9 / 9 / 9</code></td><td>Insuficiente</td><td>Abaixo de 10.</td></tr></tbody></table>
+</section>
+
+<section class="card"><h2>Erros frequentes</h2><ul><li>Colocar `media >= 10` antes de `media >= 18`.</li><li>Dividir apenas o último valor por 3 por falta de parênteses.</li><li>Não validar as três entradas.</li></ul></section>
+<div class="footer">Recurso complementar para consulta a partir de manuais PDF.</div>
+</main>
+<script src="../assets/app.js"></script>
+</body></html>

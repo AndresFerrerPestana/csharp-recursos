@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CSharp_PortesEncomenda — Solução</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header><div class="header-inner">
+<div class="eyebrow">C# · Solução proposta</div>
+<h1>CSharp_PortesEncomenda</h1>
+<p class="subtitle">Valor de fronteira e cálculo condicional.</p>
+</div></header>
+<main>
+<div class="breadcrumb"><a href="../index.html">← Voltar ao índice</a></div>
+<section class="card">
+<h2>Objetivo</h2><p>Calcular portes de 4,90 € para encomendas inferiores a 50 € e portes gratuitos a partir de 50 €.</p>
+<div class="badges"><span class="badge">decimal.TryParse</span><span class="badge">if / else</span><span class="badge">decimal</span><span class="badge">€</span></div>
+</section>
+<section class="card">
+<h2>Código</h2>
+<div class="tabs">
+<button class="tab active" id="tabManual" onclick="showTab('manual')">Código do manual</button>
+<button class="tab" id="tabOnline" onclick="showTab('online')">Versão para compilador online</button>
+</div>
+
+<div id="panelManual">
+<div class="toolbar">
+<div><strong>Versão moderna</strong><br><span class="small">Adequada a projetos com instruções de nível superior.</span></div>
+<div class="actions">
+<button class="secondary" onclick="copyText('manualCode')">Copiar código</button>
+<a class="button secondary" href="../codigo/CSharp_PortesEncomenda_manual.cs" download>Descarregar .cs</a>
+</div></div>
+<div class="status" id="statusManual"></div>
+<pre id="manualCode"><code>using System.Text;
+
+Console.OutputEncoding = Encoding.UTF8;
+
+Console.Write(&quot;Valor da encomenda: &quot;);
+
+if (decimal.TryParse(Console.ReadLine(), out decimal valor) &amp;&amp; valor &gt;= 0)
+{
+    decimal portes;
+
+    if (valor &gt;= 50m)
+        portes = 0m;
+    else
+        portes = 4.90m;
+
+    decimal total = valor + portes;
+
+    Console.WriteLine($&quot;Encomenda: {valor:F2} €&quot;);
+    Console.WriteLine($&quot;Portes: {portes:F2} €&quot;);
+    Console.WriteLine($&quot;Total: {total:F2} €&quot;);
+}
+else
+{
+    Console.WriteLine(&quot;Valor inválido.&quot;);
+}</code></pre>
+</div>
+
+<div id="panelOnline" class="hidden">
+<div class="toolbar">
+<div><strong>Versão compatível com compiladores online</strong><br><span class="small">Inclui explicitamente <code>Program</code> e <code>Main()</code>.</span></div>
+<div class="actions">
+<button class="secondary" onclick="copyText('onlineCode')">Copiar versão online</button>
+<a class="button secondary" href="../codigo/CSharp_PortesEncomenda_online.cs" download>Descarregar .cs</a>
+<button class="primary" onclick="copyAndOpen()">Copiar e abrir OneCompiler</button>
+</div></div>
+<div class="status" id="statusOnline"></div>
+<pre id="onlineCode"><code>using System;
+using System.Text;
+
+class Program
+{
+    static void Main()
+    {
+        Console.OutputEncoding = Encoding.UTF8;
+
+        Console.Write(&quot;Valor da encomenda: &quot;);
+
+        if (decimal.TryParse(Console.ReadLine(), out decimal valor) &amp;&amp; valor &gt;= 0)
+        {
+            decimal portes;
+
+            if (valor &gt;= 50m)
+                portes = 0m;
+            else
+                portes = 4.90m;
+
+            decimal total = valor + portes;
+
+            Console.WriteLine($&quot;Encomenda: {valor:F2} €&quot;);
+            Console.WriteLine($&quot;Portes: {portes:F2} €&quot;);
+            Console.WriteLine($&quot;Total: {total:F2} €&quot;);
+        }
+        else
+        {
+            Console.WriteLine(&quot;Valor inválido.&quot;);
+        }
+    }
+}</code></pre>
+<div class="note"><strong>Entrada no OneCompiler:</strong> Uma linha com o valor da encomenda. Ex.: `49.99`.</div>
+</div>
+
+<div class="note"><strong>Porque existem duas versões?</strong> O Visual Studio com C# moderno pode utilizar instruções de nível superior. Alguns compiladores online utilizam a estrutura tradicional com <code>Program</code> e <code>Main()</code>.</div>
+</section>
+
+<section class="card"><h2>Como funciona</h2><ul><li>O limite de 50 € pertence ao caso sem portes.</li><li>`decimal` é utilizado por se tratar de valores monetários.</li></ul></section>
+
+<section class="card"><h2>Testes recomendados</h2>
+<table><thead><tr><th>Entrada / situação</th><th>Resultado esperado</th><th>Objetivo</th></tr></thead>
+<tbody><tr><td><code>49,99</code></td><td>Portes 4,90 €</td><td>Imediatamente abaixo do limite.</td></tr><tr><td><code>50,00</code></td><td>Portes 0,00 €</td><td>Valor de fronteira.</td></tr><tr><td><code>80,00</code></td><td>Portes 0,00 €</td><td>Acima do limite.</td></tr></tbody></table>
+</section>
+
+<section class="card"><h2>Erros frequentes</h2><ul><li>Usar `>` em vez de `>=`.</li><li>Somar portes antes de definir o valor correto.</li><li>Aceitar valores negativos sem validação.</li></ul></section>
+<div class="footer">Recurso complementar para consulta a partir de manuais PDF.</div>
+</main>
+<script src="../assets/app.js"></script>
+</body></html>
