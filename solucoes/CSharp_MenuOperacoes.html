@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Solução de exercício C# com código copiável, testes recomendados e versão para compilador online.">
+<title>CSharp_MenuOperacoes — Solução</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header><div class="header-inner">
+<div class="topbar"><div class="brand"><span class="brand-mark">&lt;/&gt;</span> Recursos C#</div>
+<nav class="nav"><a href="../index.html">Início</a><a href="https://github.com/AndresFerrerPestana/csharp-recursos" target="_blank" rel="noopener">GitHub</a></nav></div>
+<div class="eyebrow">C# · Estruturas de seleção e repetição</div>
+<h1>CSharp_MenuOperacoes</h1>
+<p class="subtitle">Exercício integrado com do...while, switch, for e acumulador.</p>
+</div></header>
+<main>
+<div class="breadcrumb link-row">
+<a class="button secondary" href="../index.html">← Voltar ao índice</a>
+<button class="button copy-link" onclick="copyPageLink()">Copiar ligação desta solução</button>
+<span id="pageLinkStatus" class="status"></span>
+</div>
+<section class="card">
+<h2>Objetivo</h2><p>Construir um menu repetitivo com duas operações e uma opção de saída.</p>
+<div class="badges"><span class="badge">do...while</span><span class="badge">switch</span><span class="badge">for</span><span class="badge">acumulador</span></div>
+</section>
+<section class="card">
+<h2>Código</h2>
+<div class="tabs">
+<button class="tab active" id="tabManual" onclick="showTab('manual')">Código do manual</button>
+<button class="tab" id="tabOnline" onclick="showTab('online')">Versão para compilador online</button>
+</div>
+<div id="panelManual">
+<div class="toolbar"><div><strong>Versão moderna</strong><br><span class="small">Adequada a projetos com instruções de nível superior.</span></div>
+<div class="actions"><button class="secondary" onclick="copyText('manualCode')">Copiar código</button>
+<a class="button secondary" href="../codigo/CSharp_MenuOperacoes_manual.cs" download>Descarregar .cs</a></div></div>
+<div class="status" id="statusManual"></div>
+<pre id="manualCode"><code>int opcao;
+
+do
+{
+    Console.WriteLine(&quot;1 - Somar os numeros de 1 a 5&quot;);
+    Console.WriteLine(&quot;2 - Mostrar os pares de 2 a 10&quot;);
+    Console.WriteLine(&quot;0 - Terminar&quot;);
+    Console.Write(&quot;Opcao: &quot;);
+
+    if (!int.TryParse(Console.ReadLine(), out opcao))
+    {
+        opcao = -1;
+    }
+
+    switch (opcao)
+    {
+        case 1:
+            int soma = 0;
+
+            for (int numero = 1; numero &lt;= 5; numero++)
+            {
+                soma += numero;
+            }
+
+            Console.WriteLine($&quot;Soma: {soma}&quot;);
+            break;
+
+        case 2:
+            for (int numero = 2; numero &lt;= 10; numero++)
+            {
+                if (numero % 2 == 0)
+                {
+                    Console.WriteLine(numero);
+                }
+            }
+            break;
+
+        case 0:
+            Console.WriteLine(&quot;Programa terminado.&quot;);
+            break;
+
+        default:
+            Console.WriteLine(&quot;Opcao invalida.&quot;);
+            break;
+    }
+
+} while (opcao != 0);</code></pre>
+</div>
+<div id="panelOnline" class="hidden">
+<div class="toolbar"><div><strong>Versão compatível com compiladores online</strong><br><span class="small">Inclui explicitamente <code>Program</code> e <code>Main()</code>.</span></div>
+<div class="actions"><button class="secondary" onclick="copyText('onlineCode')">Copiar versão online</button>
+<a class="button secondary" href="../codigo/CSharp_MenuOperacoes_online.cs" download>Descarregar .cs</a>
+<button class="primary" onclick="copyAndOpen()">Copiar e abrir OneCompiler</button></div></div>
+<div class="status" id="statusOnline"></div>
+<pre id="onlineCode"><code>using System;
+
+class Program
+{
+    static void Main()
+    {
+        int opcao;
+
+        do
+        {
+            Console.WriteLine(&quot;1 - Somar os numeros de 1 a 5&quot;);
+            Console.WriteLine(&quot;2 - Mostrar os pares de 2 a 10&quot;);
+            Console.WriteLine(&quot;0 - Terminar&quot;);
+            Console.Write(&quot;Opcao: &quot;);
+
+            if (!int.TryParse(Console.ReadLine(), out opcao))
+            {
+                opcao = -1;
+            }
+
+            switch (opcao)
+            {
+                case 1:
+                    int soma = 0;
+
+                    for (int numero = 1; numero &lt;= 5; numero++)
+                    {
+                        soma += numero;
+                    }
+
+                    Console.WriteLine($&quot;Soma: {soma}&quot;);
+                    break;
+
+                case 2:
+                    for (int numero = 2; numero &lt;= 10; numero++)
+                    {
+                        if (numero % 2 == 0)
+                        {
+                            Console.WriteLine(numero);
+                        }
+                    }
+                    break;
+
+                case 0:
+                    Console.WriteLine(&quot;Programa terminado.&quot;);
+                    break;
+
+                default:
+                    Console.WriteLine(&quot;Opcao invalida.&quot;);
+                    break;
+            }
+
+        } while (opcao != 0);
+    }
+}</code></pre>
+<div class="note"><strong>Entrada no OneCompiler:</strong> Introduzir opções, uma por linha, terminando com `0`. Ex.: `1`, `2`, `0`.</div>
+</div>
+<div class="note"><strong>Porque existem duas versões?</strong> O Visual Studio com C# moderno pode utilizar instruções de nível superior. Alguns compiladores online utilizam a estrutura tradicional com <code>Program</code> e <code>Main()</code>.</div>
+</section>
+<section class="card"><h2>Como funciona</h2><ul><li>O menu repete com `do...while`.</li><li>`switch` seleciona a operação.</li><li>A opção 1 usa um acumulador.</li><li>A opção 2 combina `for`, `%` e `if`.</li><li>O `break` de cada `case` não termina o ciclo exterior.</li></ul></section>
+<section class="card"><h2>Testes recomendados</h2><table><thead><tr><th>Entrada / situação</th><th>Resultado esperado</th><th>Objetivo</th></tr></thead><tbody><tr><td><code>1 / 0</code></td><td>Soma: 15 e saída</td><td>Acumulador.</td></tr><tr><td><code>2 / 0</code></td><td>2, 4, 6, 8, 10 e saída</td><td>Pares com `%`.</td></tr><tr><td><code>0</code></td><td>Programa terminado.</td><td>Saída imediata.</td></tr><tr><td><code>abc / 3 / 0</code></td><td>Dois avisos e saída</td><td>Entradas inválidas.</td></tr></tbody></table></section>
+<section class="card"><h2>Erros frequentes</h2><ul><li>Reinicializar o acumulador dentro do `for`.</li><li>Usar `break` esperando terminar o `do...while`.</li><li>Não distinguir uma conversão inválida da opção 0.</li></ul></section>
+<div class="footer">Recurso de apoio à aprendizagem de C#, com código pronto a copiar, testar e reutilizar.</div>
+</main>
+<script src="../assets/app.js"></script>
+</body></html>
