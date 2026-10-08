@@ -1,61 +1,116 @@
 <!DOCTYPE html>
 <html lang="pt-PT">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Recursos de C# — Código e soluções</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Recursos de apoio à aprendizagem de C#, com exemplos, soluções, código copiável e versões para compiladores online.">
+<title>Código e soluções em C#</title>
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-<header><div class="header-inner">
-<div class="eyebrow">Recursos de programação</div>
-<h1>Código e soluções em C#</h1>
-<p class="subtitle">Código copiável, versões para compilador online, explicações e testes recomendados.</p>
-</div></header>
+<header>
+  <div class="header-inner">
+    <div class="topbar">
+      <div class="brand"><span class="brand-mark">&lt;/&gt;</span> Recursos C#</div>
+      <nav class="nav" aria-label="Navegação principal">
+        <a href="index.html">Início</a>
+        <a href="https://github.com/AndresFerrerPestana/csharp-recursos" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+    <div class="eyebrow">Recursos de programação</div>
+    <h1 class="hero-title">Código e soluções em C#</h1>
+    <p class="subtitle hero-subtitle">Código copiável, versões para compilador online, explicações e testes recomendados.</p>
+  </div>
+</header>
+
 <main>
 <section class="card">
-<h2>Exercícios disponíveis</h2>
-<p>Seleciona um exercício para consultar o código. Cada página contém uma versão moderna para Visual Studio e uma versão preparada para compiladores online.</p>
-<div class="grid">
-<article class="item">
-<h3>Total de uma compra</h3>
-<p><code>CSharp_TotalCompra</code><br>Operadores aritméticos e valores monetários.</p>
-<a class="button primary" href="solucoes/CSharp_TotalCompra.html">Ver código e solução</a>
-</article><article class="item">
-<h3>Compra com desconto</h3>
-<p><code>CSharp_CompraDesconto</code><br>Validação com TryParse e decisão com if.</p>
-<a class="button primary" href="solucoes/CSharp_CompraDesconto.html">Ver código e solução</a>
-</article><article class="item">
-<h3>Par ou ímpar</h3>
-<p><code>CSharp_ParOuImpar</code><br>Validação com TryParse, operador % e if/else.</p>
-<a class="button primary" href="solucoes/CSharp_ParOuImpar.html">Ver código e solução</a>
-</article><article class="item">
-<h3>Maior de dois valores</h3>
-<p><code>CSharp_MaiorDeDoisValores</code><br>Comparações com &gt;, &lt; e igualdade.</p>
-<a class="button primary" href="solucoes/CSharp_MaiorDeDoisValores.html">Ver código e solução</a>
-</article><article class="item">
-<h3>Classificação de média</h3>
-<p><code>CSharp_ClassificacaoMedia</code><br>Média aritmética e cadeia else if.</p>
-<a class="button primary" href="solucoes/CSharp_ClassificacaoMedia.html">Ver código e solução</a>
-</article><article class="item">
-<h3>Portes de encomenda</h3>
-<p><code>CSharp_PortesEncomenda</code><br>Valor de fronteira e cálculo condicional.</p>
-<a class="button primary" href="solucoes/CSharp_PortesEncomenda.html">Ver código e solução</a>
-</article><article class="item">
-<h3>Validação composta</h3>
-<p><code>CSharp_ValidacaoComposta</code><br>Combinação de condições com &amp;&amp; e ||.</p>
-<a class="button primary" href="solucoes/CSharp_ValidacaoComposta.html">Ver código e solução</a>
+  <div class="section-intro">
+    <div>
+      <span class="kicker">Biblioteca de exercícios</span>
+      <h2>Exercícios disponíveis</h2>
+      <p>Seleciona um exercício para consultar o código, testar diferentes valores e comparar abordagens.</p>
+    </div>
+    <div class="search-wrap">
+      <label for="exerciseSearch" class="small">Pesquisar exercício</label>
+      <input id="exerciseSearch" class="search-input" type="search"
+             placeholder="Ex.: TryParse, média, portes..."
+             oninput="filterExercises(this.value)">
+    </div>
+  </div>
+  <div class="grid">
+    
+<article class="item" data-exercise-card data-search="CSharp_ClassificacaoMedia Classificação de média Média aritmética e cadeia else if. TryParse if / else">
+  <span class="kicker">Exercício 1</span>
+  <h3>Classificação de média</h3>
+  <div class="item-code">CSharp_ClassificacaoMedia</div>
+  <p>Média aritmética e cadeia else if.</p>
+  <div class="item-tags"><span class="item-tag">TryParse</span><span class="item-tag">if / else</span></div>
+  <a class="button primary" href="solucoes/CSharp_ClassificacaoMedia.html">Ver código e solução</a>
 </article>
-</div>
+<article class="item" data-exercise-card data-search="CSharp_CompraDesconto Compra com desconto Validação com TryParse e decisão com if. TryParse if / else %">
+  <span class="kicker">Exercício 2</span>
+  <h3>Compra com desconto</h3>
+  <div class="item-code">CSharp_CompraDesconto</div>
+  <p>Validação com TryParse e decisão com if.</p>
+  <div class="item-tags"><span class="item-tag">TryParse</span><span class="item-tag">if / else</span><span class="item-tag">%</span></div>
+  <a class="button primary" href="solucoes/CSharp_CompraDesconto.html">Ver código e solução</a>
+</article>
+<article class="item" data-exercise-card data-search="CSharp_MaiorDeDoisValores Maior de dois valores Comparações com &gt;, &lt; e igualdade. TryParse if / else">
+  <span class="kicker">Exercício 3</span>
+  <h3>Maior de dois valores</h3>
+  <div class="item-code">CSharp_MaiorDeDoisValores</div>
+  <p>Comparações com &gt;, &lt; e igualdade.</p>
+  <div class="item-tags"><span class="item-tag">TryParse</span><span class="item-tag">if / else</span></div>
+  <a class="button primary" href="solucoes/CSharp_MaiorDeDoisValores.html">Ver código e solução</a>
+</article>
+<article class="item" data-exercise-card data-search="CSharp_ParOuImpar Par ou ímpar Validação com TryParse, operador % e if/else. TryParse if / else %">
+  <span class="kicker">Exercício 4</span>
+  <h3>Par ou ímpar</h3>
+  <div class="item-code">CSharp_ParOuImpar</div>
+  <p>Validação com TryParse, operador % e if/else.</p>
+  <div class="item-tags"><span class="item-tag">TryParse</span><span class="item-tag">if / else</span><span class="item-tag">%</span></div>
+  <a class="button primary" href="solucoes/CSharp_ParOuImpar.html">Ver código e solução</a>
+</article>
+<article class="item" data-exercise-card data-search="CSharp_PortesEncomenda Portes de encomenda Valor de fronteira e cálculo condicional. TryParse if / else decimal">
+  <span class="kicker">Exercício 5</span>
+  <h3>Portes de encomenda</h3>
+  <div class="item-code">CSharp_PortesEncomenda</div>
+  <p>Valor de fronteira e cálculo condicional.</p>
+  <div class="item-tags"><span class="item-tag">TryParse</span><span class="item-tag">if / else</span><span class="item-tag">decimal</span></div>
+  <a class="button primary" href="solucoes/CSharp_PortesEncomenda.html">Ver código e solução</a>
+</article>
+<article class="item" data-exercise-card data-search="CSharp_TotalCompra Total de uma compra Operadores aritméticos e valores monetários. % decimal">
+  <span class="kicker">Exercício 6</span>
+  <h3>Total de uma compra</h3>
+  <div class="item-code">CSharp_TotalCompra</div>
+  <p>Operadores aritméticos e valores monetários.</p>
+  <div class="item-tags"><span class="item-tag">%</span><span class="item-tag">decimal</span></div>
+  <a class="button primary" href="solucoes/CSharp_TotalCompra.html">Ver código e solução</a>
+</article>
+<article class="item" data-exercise-card data-search="CSharp_ValidacaoComposta Validação composta Combinação de condições com &amp;&amp; e ||. TryParse if / else lógica">
+  <span class="kicker">Exercício 7</span>
+  <h3>Validação composta</h3>
+  <div class="item-code">CSharp_ValidacaoComposta</div>
+  <p>Combinação de condições com &amp;&amp; e ||.</p>
+  <div class="item-tags"><span class="item-tag">TryParse</span><span class="item-tag">if / else</span><span class="item-tag">lógica</span></div>
+  <a class="button primary" href="solucoes/CSharp_ValidacaoComposta.html">Ver código e solução</a>
+</article>
+  </div>
+  <div id="emptyState" class="empty-state">Não foram encontrados exercícios com esse termo.</div>
 </section>
+
 <section class="card">
-<h2>Como utilizar</h2>
-<ol>
-<li>Abrir a solução pretendida.</li>
-<li>Escolher <strong>Código do manual</strong> para trabalhar no Visual Studio.</li>
-<li>Escolher <strong>Versão para compilador online</strong> quando o ambiente exigir <code>Program</code> e <code>Main()</code>.</li>
-<li>Usar <strong>Copiar e abrir OneCompiler</strong> para testar rapidamente no browser.</li>
-</ol>
+  <span class="kicker">Como utilizar</span>
+  <h2>Duas versões de código</h2>
+  <p>Cada exercício inclui uma versão moderna para projetos C# atuais e uma versão preparada para compiladores online que exigem explicitamente <code>Program</code> e <code>Main()</code>.</p>
+  <div class="callout-success">
+    <strong>Sugestão:</strong> utiliza a versão do manual no Visual Studio e a versão para compilador online quando pretenderes testar rapidamente no browser.
+  </div>
 </section>
-<div class="footer">Estrutura pronta para publicação como site estático, por exemplo através do GitHub Pages.</div>
+
+<div class="footer">Recursos de apoio à aprendizagem de C#, com exemplos, soluções e código pronto a testar.</div>
 </main>
-</body></html>
+<script src="assets/app.js"></script>
+</body>
+</html>

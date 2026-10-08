@@ -18,3 +18,15 @@ Abrir `index.html` num navegador.
 6. Depois de existir URL pública, os links podem ser inseridos nos PDFs e usados para gerar QR Codes.
 
 Nota: o botão “Copiar e abrir OneCompiler” copia o código para a área de transferência e abre o editor. O utilizador deve colar o código no OneCompiler.
+
+
+## Endereço público
+https://andresferrerpestana.github.io/csharp-recursos/
+
+## Melhorias v2
+- Pesquisa de exercícios na página inicial.
+- Navegação consistente entre início, soluções e GitHub.
+- Botão para copiar a ligação direta de cada solução.
+- Cartões com etiquetas de conceitos.
+- Rodapé orientado ao utilizador final.
+- Melhor adaptação a ecrãs pequenos.

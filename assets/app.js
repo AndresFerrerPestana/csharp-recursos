@@ -30,3 +30,29 @@ async function copyAndOpen() {
   s.textContent = 'Código copiado. Cole-o no OneCompiler e execute.';
   setTimeout(() => s.textContent = '', 3500);
 }
+
+
+async function copyPageLink() {
+  const status = document.getElementById('pageLinkStatus');
+  const url = window.location.href;
+  try { await navigator.clipboard.writeText(url); }
+  catch { fallbackCopy(url); }
+  if (status) {
+    status.textContent = 'Ligação copiada.';
+    setTimeout(() => status.textContent = '', 2200);
+  }
+}
+
+function filterExercises(value) {
+  const q = (value || '').trim().toLowerCase();
+  const cards = document.querySelectorAll('[data-exercise-card]');
+  let visible = 0;
+  cards.forEach(card => {
+    const hay = (card.dataset.search || card.innerText).toLowerCase();
+    const show = !q || hay.includes(q);
+    card.style.display = show ? '' : 'none';
+    if (show) visible++;
+  });
+  const empty = document.getElementById('emptyState');
+  if (empty) empty.style.display = visible ? 'none' : 'block';
+}
