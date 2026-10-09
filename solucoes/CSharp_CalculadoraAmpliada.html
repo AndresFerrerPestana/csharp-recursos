@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Solução de exercício C# com código copiável, testes recomendados e versão para compilador online.">
+<title>CSharp_CalculadoraAmpliada — Solução</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header><div class="header-inner">
+<div class="topbar"><div class="brand"><span class="brand-mark">&lt;/&gt;</span> Recursos C#</div>
+<nav class="nav"><a href="../index.html">Início</a><a href="https://github.com/AndresFerrerPestana/csharp-recursos" target="_blank" rel="noopener">GitHub</a></nav></div>
+<div class="eyebrow">C# · Métodos e parâmetros</div>
+<h1>CSharp_CalculadoraAmpliada</h1>
+<p class="subtitle">Acrescentar a diferença sem alterar as outras opções.</p>
+</div></header>
+<main>
+<div class="breadcrumb link-row">
+<a class="button secondary" href="../index.html">← Voltar ao índice</a>
+<button class="button copy-link" onclick="copyPageLink()">Copiar ligação desta solução</button>
+<span id="pageLinkStatus" role="status" aria-live="polite" class="status"></span>
+</div>
+<section class="card">
+<h2>Enunciado</h2><p>Criar uma aplicação nova e copiar as duas partes do tutorial para Program.cs. Acrescentar a opção 3 — Diferença, com static int Subtrair(int primeiro, int segundo). Atualizar o menu, o limite máximo da leitura da opção e o switch. Manter as opções 0, 1 e 2 e o intervalo de -100 a 100 para os números.</p>
+<div class="badges"><span class="badge">exercício</span><span class="badge">menu</span><span class="badge">parâmetros</span><span class="badge">return</span></div>
+</section>
+<section class="card">
+<h2>Código</h2>
+<div class="tabs">
+<button class="tab active" id="tabManual" onclick="showTab('manual')">Código do manual</button>
+<button class="tab" id="tabOnline" onclick="showTab('online')">Versão para compilador online</button>
+</div>
+<div id="panelManual">
+<div class="toolbar"><div><strong>Versão moderna</strong><br><span class="small">Adequada a projetos com instruções de nível superior.</span></div>
+<div class="actions"><button class="secondary" onclick="copyText('manualCode')">Copiar código</button>
+<a class="button secondary" href="../codigo/CSharp_CalculadoraAmpliada_manual.cs" download>Descarregar .cs</a></div></div>
+<div class="status" id="statusManual" role="status" aria-live="polite"></div>
+<pre id="manualCode"><code>int opcao;
+do
+{
+    MostrarMenu();
+    opcao = LerInteiroNoIntervalo(&quot;Opção: &quot;, 0, 3);
+    if (opcao != 0)
+    {
+        int primeiro = LerInteiroNoIntervalo(
+            &quot;Primeiro número [-100, 100]: &quot;, -100, 100);
+        int segundo = LerInteiroNoIntervalo(
+            &quot;Segundo número [-100, 100]: &quot;, -100, 100);
+        switch (opcao)
+        {
+            case 1:
+                int soma = Somar(primeiro, segundo);
+                Console.WriteLine($&quot;Soma: {soma}&quot;);
+                break;
+            case 2:
+                int maior = Maior(primeiro, segundo);
+                Console.WriteLine($&quot;Maior: {maior}&quot;);
+                break;
+            case 3:
+                int diferenca = Subtrair(primeiro, segundo);
+                Console.WriteLine($&quot;Diferença: {diferenca}&quot;);
+                break;
+        }
+    }
+} while (opcao != 0);
+Console.WriteLine(&quot;Programa terminado.&quot;);
+
+static void MostrarMenu()
+{
+    Console.WriteLine(&quot;1 - Somar&quot;);
+    Console.WriteLine(&quot;2 - Maior de dois valores&quot;);
+    Console.WriteLine(&quot;3 - Diferença&quot;);
+    Console.WriteLine(&quot;0 - Terminar&quot;);
+}
+
+static int LerInteiroNoIntervalo(string mensagem,
+    int minimo, int maximo)
+{
+    int numero;
+    bool valido;
+    do
+    {
+        Console.Write(mensagem);
+        // Validar a conversão antes de aceitar o valor.
+        valido = int.TryParse(Console.ReadLine(), out numero)
+            &amp;&amp; numero &gt;= minimo &amp;&amp; numero &lt;= maximo;
+        if (!valido)
+        {
+            Console.WriteLine(
+                $&quot;Introduza um inteiro entre {minimo} e {maximo}.&quot;);
+        }
+    } while (!valido);
+    return numero; // Só devolve um valor aceite.
+}
+
+static int Somar(int primeiro, int segundo)
+{
+    return primeiro + segundo;
+}
+
+static int Maior(int primeiro, int segundo)
+{
+    if (primeiro &gt;= segundo)
+    {
+        return primeiro;
+    }
+    return segundo;
+}
+
+static int Subtrair(int primeiro, int segundo)
+{
+    return primeiro - segundo;
+}</code></pre>
+</div>
+<div id="panelOnline" class="hidden">
+<div class="toolbar"><div><strong>Versão compatível com compiladores online</strong><br><span class="small">Inclui explicitamente <code>Program</code> e <code>Main()</code>.</span></div>
+<div class="actions"><button class="secondary" onclick="copyText('onlineCode')">Copiar versão online</button>
+<a class="button secondary" href="../codigo/CSharp_CalculadoraAmpliada_online.cs" download>Descarregar .cs</a>
+<a class="button primary" href="https://www.onlinegdb.com/online_csharp_compiler" target="_blank" rel="noopener">Abrir no OnlineGDB</a></div></div>
+<div class="note"><strong>Como testar no OnlineGDB:</strong> clicar em «Copiar versão online» e depois em «Abrir no OnlineGDB». Manter a linguagem <strong>C# (mono)</strong>, selecionar todo o código inicial em <code>main.cs</code> e substituí-lo com Ctrl+V. O código não é transferido automaticamente. Clicar em <strong>Run</strong>. Em <strong>Interactive Console</strong>, escrever cada resposta e premir Enter; em <strong>Text</strong>, preencher previamente todas as entradas, uma por linha, antes de executar.</div>
+<div class="status" id="statusOnline" role="status" aria-live="polite"></div>
+<pre id="onlineCode"><code>using System;
+
+class Program
+{
+    static void Main()
+    {
+        int opcao;
+        do
+        {
+            MostrarMenu();
+            opcao = LerInteiroNoIntervalo(&quot;Opção: &quot;, 0, 3);
+            if (opcao != 0)
+            {
+                int primeiro = LerInteiroNoIntervalo(
+                    &quot;Primeiro número [-100, 100]: &quot;, -100, 100);
+                int segundo = LerInteiroNoIntervalo(
+                    &quot;Segundo número [-100, 100]: &quot;, -100, 100);
+                switch (opcao)
+                {
+                    case 1:
+                        int soma = Somar(primeiro, segundo);
+                        Console.WriteLine($&quot;Soma: {soma}&quot;);
+                        break;
+                    case 2:
+                        int maior = Maior(primeiro, segundo);
+                        Console.WriteLine($&quot;Maior: {maior}&quot;);
+                        break;
+                    case 3:
+                        int diferenca = Subtrair(primeiro, segundo);
+                        Console.WriteLine($&quot;Diferença: {diferenca}&quot;);
+                        break;
+                }
+            }
+        } while (opcao != 0);
+        Console.WriteLine(&quot;Programa terminado.&quot;);
+    }
+
+    static void MostrarMenu()
+    {
+        Console.WriteLine(&quot;1 - Somar&quot;);
+        Console.WriteLine(&quot;2 - Maior de dois valores&quot;);
+        Console.WriteLine(&quot;3 - Diferença&quot;);
+        Console.WriteLine(&quot;0 - Terminar&quot;);
+    }
+
+    static int LerInteiroNoIntervalo(string mensagem,
+        int minimo, int maximo)
+    {
+        int numero;
+        bool valido;
+        do
+        {
+            Console.Write(mensagem);
+            // Validar a conversão antes de aceitar o valor.
+            valido = int.TryParse(Console.ReadLine(), out numero)
+                &amp;&amp; numero &gt;= minimo &amp;&amp; numero &lt;= maximo;
+            if (!valido)
+            {
+                Console.WriteLine(
+                    $&quot;Introduza um inteiro entre {minimo} e {maximo}.&quot;);
+            }
+        } while (!valido);
+        return numero; // Só devolve um valor aceite.
+    }
+
+    static int Somar(int primeiro, int segundo)
+    {
+        return primeiro + segundo;
+    }
+
+    static int Maior(int primeiro, int segundo)
+    {
+        if (primeiro &gt;= segundo)
+        {
+            return primeiro;
+        }
+        return segundo;
+    }
+
+    static int Subtrair(int primeiro, int segundo)
+    {
+        return primeiro - segundo;
+    }
+}</code></pre>
+<div class="note"><strong>Entradas:</strong> Fornecer a opção, os dois números quando a opção não for 0 e as opções seguintes, uma entrada por linha. Terminar sempre com 0. Exemplo completo: 3, 7, 5, 0 (quatro linhas). Após uma entrada inválida, fornecer uma entrada válida para a mesma pergunta. Sem o 0 final, a execução continua à espera de opções.</div>
+</div>
+<div class="note"><strong>Porque existem duas versões?</strong> O Visual Studio com C# moderno pode utilizar instruções de nível superior. Para C# (mono) no OnlineGDB, a versão online coloca as instruções em <code>Program.Main()</code> e as funções como métodos <code>static</code> da classe. Mantém os mesmos parâmetros, cálculos, mensagens e resultados; no Visual Studio, usar a versão do manual com funções locais <code>static</code>.</div>
+</section>
+<section class="card"><h2>Como funciona</h2><ul><li>O menu, o limite da opção e o switch incluem agora a opção 3.</li><li>Subtrair devolve primeiro - segundo: a ordem dos argumentos importa.</li><li>As opções 0, 1 e 2 mantêm o comportamento do tutorial.</li></ul></section>
+<section class="card"><h2>Resultado esperado</h2><p>Nos exemplos com entrada, a transcrição inclui os valores escritos. Nas calculadoras, apresenta-se o resumo do percurso.</p><pre><code>Entradas, uma por linha: 3, 7, 5, 0
+Resultado do cálculo: Diferença: 2
+O menu reaparece e termina com Programa terminado.</code></pre></section>
+<section class="card"><h2>Testes recomendados</h2><p>A barra / separa linhas de entrada; o ponto e vírgula separa execuções independentes. «Linha vazia» significa premir Enter sem escrever.</p><table><thead><tr><th>Entrada / situação</th><th>Resultado esperado</th><th>Objetivo</th></tr></thead><tbody><tr><td>3 / 7 / 5 / 0; 3 / 5 / 7 / 0</td><td>Diferença: 2; Diferença: -2</td><td>Ordem dos argumentos</td></tr><tr><td>3 / -100 / 100 / 0; 3 / 100 / -100 / 0</td><td>Diferença: -200; Diferença: 200</td><td>Limites</td></tr><tr><td>4 / 0</td><td>Um aviso e Programa terminado.</td><td>Opção inválida</td></tr><tr><td>1 / 7 / 5 / 2 / 8 / 8 / 0</td><td>Soma: 12; Maior: 8; fim.</td><td>Regressão do menu</td></tr></tbody></table></section>
+<section class="card"><h2>Erros frequentes</h2><ul><li>Copiar apenas parte do programa ou misturar as duas versões no mesmo ficheiro.</li><li>Confundir o valor devolvido por return com uma mensagem escrita na consola.</li><li>Alterar a ordem ou os tipos dos argumentos sem rever os parâmetros.</li></ul></section>
+<div class="footer">Recurso de apoio à aprendizagem de C#, com código pronto a copiar, testar e reutilizar.</div>
+</main>
+<script src="../assets/app.js"></script>
+</body></html>

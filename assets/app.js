@@ -11,32 +11,35 @@ function fallbackCopy(text) {
   ta.value = text;
   document.body.appendChild(ta);
   ta.select();
-  document.execCommand('copy');
+  const copied = document.execCommand('copy');
   ta.remove();
+  if (!copied) throw new Error('A cópia foi bloqueada pelo navegador.');
 }
 async function copyText(id) {
   const text = document.getElementById(id).innerText;
   const statusId = id === 'manualCode' ? 'statusManual' : 'statusOnline';
-  try { await navigator.clipboard.writeText(text); } catch { fallbackCopy(text); }
   const s = document.getElementById(statusId);
+  try {
+    try { await navigator.clipboard.writeText(text); } catch { fallbackCopy(text); }
+  } catch {
+    s.textContent = 'Não foi possível copiar. Selecione o código e use Ctrl+C.';
+    return;
+  }
   s.textContent = 'Código copiado para a área de transferência.';
   setTimeout(() => s.textContent = '', 2500);
 }
-async function copyAndOpen() {
-  const text = document.getElementById('onlineCode').innerText;
-  try { await navigator.clipboard.writeText(text); } catch { fallbackCopy(text); }
-  window.open('https://onecompiler.com/csharp', '_blank', 'noopener');
-  const s = document.getElementById('statusOnline');
-  s.textContent = 'Código copiado. Cole-o no OneCompiler e execute.';
-  setTimeout(() => s.textContent = '', 3500);
-}
+
 
 
 async function copyPageLink() {
   const status = document.getElementById('pageLinkStatus');
   const url = window.location.href;
-  try { await navigator.clipboard.writeText(url); }
-  catch { fallbackCopy(url); }
+  try {
+    try { await navigator.clipboard.writeText(url); } catch { fallbackCopy(url); }
+  } catch {
+    if (status) status.textContent = 'Não foi possível copiar. Copie o endereço do navegador.';
+    return;
+  }
   if (status) {
     status.textContent = 'Ligação copiada.';
     setTimeout(() => status.textContent = '', 2200);

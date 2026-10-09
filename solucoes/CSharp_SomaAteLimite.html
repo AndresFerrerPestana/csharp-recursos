@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Solução de exercício C# com código copiável, testes recomendados e versão para compilador online.">
+<title>CSharp_SomaAteLimite — Solução</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header><div class="header-inner">
+<div class="topbar"><div class="brand"><span class="brand-mark">&lt;/&gt;</span> Recursos C#</div>
+<nav class="nav"><a href="../index.html">Início</a><a href="https://github.com/AndresFerrerPestana/csharp-recursos" target="_blank" rel="noopener">GitHub</a></nav></div>
+<div class="eyebrow">C# · Métodos e parâmetros</div>
+<h1>CSharp_SomaAteLimite</h1>
+<p class="subtitle">Reutilizar a leitura e devolver uma soma acumulada.</p>
+</div></header>
+<main>
+<div class="breadcrumb link-row">
+<a class="button secondary" href="../index.html">← Voltar ao índice</a>
+<button class="button copy-link" onclick="copyPageLink()">Copiar ligação desta solução</button>
+<span id="pageLinkStatus" role="status" aria-live="polite" class="status"></span>
+</div>
+<section class="card">
+<h2>Enunciado</h2><p>Reutilizar LerInteiroNoIntervalo do tutorial para obter um inteiro entre 1 e 100. Implementar static int SomarAte(int limite), com um acumulador e um ciclo for, para somar os inteiros de 1 até limite. A função devolve a soma e não escreve na consola.</p>
+<div class="badges"><span class="badge">exercício</span><span class="badge">acumulador</span><span class="badge">return</span></div>
+</section>
+<section class="card">
+<h2>Código</h2>
+<div class="tabs">
+<button class="tab active" id="tabManual" onclick="showTab('manual')">Código do manual</button>
+<button class="tab" id="tabOnline" onclick="showTab('online')">Versão para compilador online</button>
+</div>
+<div id="panelManual">
+<div class="toolbar"><div><strong>Versão moderna</strong><br><span class="small">Adequada a projetos com instruções de nível superior.</span></div>
+<div class="actions"><button class="secondary" onclick="copyText('manualCode')">Copiar código</button>
+<a class="button secondary" href="../codigo/CSharp_SomaAteLimite_manual.cs" download>Descarregar .cs</a></div></div>
+<div class="status" id="statusManual" role="status" aria-live="polite"></div>
+<pre id="manualCode"><code>int limite = LerInteiroNoIntervalo(&quot;Limite [1, 100]: &quot;, 1, 100);
+int soma = SomarAte(limite);
+Console.WriteLine($&quot;Soma: {soma}&quot;);
+
+static int LerInteiroNoIntervalo(string mensagem,
+    int minimo, int maximo)
+{
+    int numero;
+    bool valido;
+    do
+    {
+        Console.Write(mensagem);
+        // Validar a conversão antes de aceitar o valor.
+        valido = int.TryParse(Console.ReadLine(), out numero)
+            &amp;&amp; numero &gt;= minimo &amp;&amp; numero &lt;= maximo;
+        if (!valido)
+        {
+            Console.WriteLine(
+                $&quot;Introduza um inteiro entre {minimo} e {maximo}.&quot;);
+        }
+    } while (!valido);
+    return numero; // Só devolve um valor aceite.
+}
+
+static int SomarAte(int limite)
+{
+    int soma = 0; // Um novo acumulador em cada chamada.
+    for (int numero = 1; numero &lt;= limite; numero++)
+    {
+        soma += numero;
+    }
+    return soma;
+}</code></pre>
+</div>
+<div id="panelOnline" class="hidden">
+<div class="toolbar"><div><strong>Versão compatível com compiladores online</strong><br><span class="small">Inclui explicitamente <code>Program</code> e <code>Main()</code>.</span></div>
+<div class="actions"><button class="secondary" onclick="copyText('onlineCode')">Copiar versão online</button>
+<a class="button secondary" href="../codigo/CSharp_SomaAteLimite_online.cs" download>Descarregar .cs</a>
+<a class="button primary" href="https://www.onlinegdb.com/online_csharp_compiler" target="_blank" rel="noopener">Abrir no OnlineGDB</a></div></div>
+<div class="note"><strong>Como testar no OnlineGDB:</strong> clicar em «Copiar versão online» e depois em «Abrir no OnlineGDB». Manter a linguagem <strong>C# (mono)</strong>, selecionar todo o código inicial em <code>main.cs</code> e substituí-lo com Ctrl+V. O código não é transferido automaticamente. Clicar em <strong>Run</strong>. Em <strong>Interactive Console</strong>, escrever cada resposta e premir Enter; em <strong>Text</strong>, preencher previamente todas as entradas, uma por linha, antes de executar.</div>
+<div class="status" id="statusOnline" role="status" aria-live="polite"></div>
+<pre id="onlineCode"><code>using System;
+
+class Program
+{
+    static void Main()
+    {
+        int limite = LerInteiroNoIntervalo(&quot;Limite [1, 100]: &quot;, 1, 100);
+        int soma = SomarAte(limite);
+        Console.WriteLine($&quot;Soma: {soma}&quot;);
+    }
+
+    static int LerInteiroNoIntervalo(string mensagem,
+        int minimo, int maximo)
+    {
+        int numero;
+        bool valido;
+        do
+        {
+            Console.Write(mensagem);
+            // Validar a conversão antes de aceitar o valor.
+            valido = int.TryParse(Console.ReadLine(), out numero)
+                &amp;&amp; numero &gt;= minimo &amp;&amp; numero &lt;= maximo;
+            if (!valido)
+            {
+                Console.WriteLine(
+                    $&quot;Introduza um inteiro entre {minimo} e {maximo}.&quot;);
+            }
+        } while (!valido);
+        return numero; // Só devolve um valor aceite.
+    }
+
+    static int SomarAte(int limite)
+    {
+        int soma = 0; // Um novo acumulador em cada chamada.
+        for (int numero = 1; numero &lt;= limite; numero++)
+        {
+            soma += numero;
+        }
+        return soma;
+    }
+}</code></pre>
+<div class="note"><strong>Entradas:</strong> Fornecer um inteiro entre 1 e 100. Ao testar dados inválidos, acrescentar uma entrada válida no fim, por exemplo abc, 0, 101, 5, uma por linha. A leitura repete-se até receber um valor aceite.</div>
+</div>
+<div class="note"><strong>Porque existem duas versões?</strong> O Visual Studio com C# moderno pode utilizar instruções de nível superior. Para C# (mono) no OnlineGDB, a versão online coloca as instruções em <code>Program.Main()</code> e as funções como métodos <code>static</code> da classe. Mantém os mesmos parâmetros, cálculos, mensagens e resultados; no Visual Studio, usar a versão do manual com funções locais <code>static</code>.</div>
+</section>
+<section class="card"><h2>Como funciona</h2><ul><li>LerInteiroNoIntervalo é reutilizada do tutorial.</li><li>O acumulador é inicializado dentro de SomarAte, em cada chamada.</li><li>O ciclo inclui limite e a soma só é apresentada no programa.</li></ul></section>
+<section class="card"><h2>Resultado esperado</h2><p>Nos exemplos com entrada, a transcrição inclui os valores escritos. Nas calculadoras, apresenta-se o resumo do percurso.</p><pre><code>Limite [1, 100]: 3
+Soma: 6</code></pre></section>
+<section class="card"><h2>Testes recomendados</h2><p>A barra / separa linhas de entrada; o ponto e vírgula separa execuções independentes. «Linha vazia» significa premir Enter sem escrever.</p><table><thead><tr><th>Entrada / situação</th><th>Resultado esperado</th><th>Objetivo</th></tr></thead><tbody><tr><td>1; 3; 100</td><td>Soma: 1; Soma: 6; Soma: 5050</td><td>Limites e cálculo</td></tr><tr><td>abc / 0 / 101 / 5</td><td>Três avisos; Soma: 15</td><td>Repetir até entrada válida</td></tr></tbody></table></section>
+<section class="card"><h2>Erros frequentes</h2><ul><li>Copiar apenas parte do programa ou misturar as duas versões no mesmo ficheiro.</li><li>Confundir o valor devolvido por return com uma mensagem escrita na consola.</li><li>Alterar a ordem ou os tipos dos argumentos sem rever os parâmetros.</li></ul></section>
+<div class="footer">Recurso de apoio à aprendizagem de C#, com código pronto a copiar, testar e reutilizar.</div>
+</main>
+<script src="../assets/app.js"></script>
+</body></html>
